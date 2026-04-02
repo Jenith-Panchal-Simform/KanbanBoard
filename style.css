@@ -75,6 +75,19 @@
     text-align: center;
     height: 100vh;
 }
+.board__header{
+    display: flex;
+    justify-content: space-around;
+}
+.board__button{
+    padding: var(--space-md);
+    border:none;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--color-bg-main);
+    font-weight: var(--font-weight-bold);
+}
 .board__wrapper{
     display: flex;
     height:95vh;
