@@ -34,6 +34,9 @@
 
   --line-height: 1.5;
 
+  --card-height:6rem;
+
+
   /* ================= SPACING ================= */
   --space-xs: 0.25rem; /* 4px */
   --space-sm: 0.5rem; /* 8px */
@@ -79,12 +82,22 @@
 .status{
     border:2px solid var(--color-border);
     width:25%;
-    div{
-        border-top: 2px solid var(--color-border);
-    }
+    display: flex;
+    flex-direction: column;
 }
-.cards{
+.cards__container{
+    border-top: 2px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap:var(--space-lg);
+    align-items:center ;
+    overflow: auto;
+}
+.card{
     background-color: var(--color-primary);
     padding:var(--space-lg);
-    height:
+    width:100px ;
+    aspect-ratio: 1/1;
+    cursor: pointer;
 }
