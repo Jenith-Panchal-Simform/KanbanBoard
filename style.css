@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+  /* ================= COLORS ================= */
+  --color-primary: #3b82f6; /* blue (buttons, active states) */
+  --color-primary-hover: #2563eb;
+
+  --color-bg-main: #f3f4f6; /* page background */
+  --color-bg-container: #e5e7eb; /* outer container */
+  --color-bg-card: #ffffff; /* cards */
+
+  --color-text-main: #111827; /* main text */
+  --color-text-secondary: #6b7280; /* description */
+  --color-text-light: #9ca3af; /* placeholders */
+
+  --color-border: #d1d5db;
+  --color-shadow: rgba(0, 0, 0, 0.05);
+
+  /* ================= TYPOGRAPHY ================= */
+  --font-family: "Inter", "Poppins", sans-serif;
+
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem; /* 16px */
+  --font-size-lg: 1.25rem; /* 20px */
+  --font-size-xl: 1.5rem; /* 24px */
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+
+  --line-height: 1.5;
+
+  /* ================= SPACING ================= */
+  --space-xs: 0.25rem; /* 4px */
+  --space-sm: 0.5rem; /* 8px */
+  --space-md: 1rem; /* 16px */
+  --space-lg: 1.5rem; /* 24px */
+  --space-xl: 2rem; /* 32px */
+  --space-2xl: 3rem; /* 48px */
+
+  /* ================= BORDER RADIUS ================= */
+  --radius-sm: 0.5rem; /* small buttons */
+  --radius-md: 0.75rem; /* cards */
+  --radius-lg: 1rem; /* containers */
+  --radius-xl: 1.5rem;
+
+  /* ================= SHADOW ================= */
+  --shadow-sm: 0 0.125rem 0.25rem var(--color-shadow);
+  --shadow-md: 0 0.25rem 0.75rem var(--color-shadow);
+  --shadow-lg: 0 0.5rem 1.5rem var(--color-shadow);
+
+  /* ================= LAYOUT ================= */
+  --container-width: 75rem; /* 1200px */
+  --card-width: 18rem;
+  --card-gap: 1.5rem;
+
+  /* ================= BUTTON ================= */
+  --btn-padding-y: 0.5rem;
+  --btn-padding-x: 1.25rem;
+
+  /* ================= TRANSITIONS ================= */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-normal: 0.3s ease;
+
+}
+.board__container{
+    background-color: var(--color-bg-container);
+    text-align: center;
+    height: 100vh;
+}
+.board__wrapper{
+    display: flex;
+    height:95vh;
+}
+.status{
+    border:2px solid var(--color-border);
+    width:25%;
+    div{
+        border-top: 2px solid var(--color-border);
+    }
+}
+.cards{
+    background-color: var(--color-primary);
+    padding:var(--space-lg);
+    height:
+}
