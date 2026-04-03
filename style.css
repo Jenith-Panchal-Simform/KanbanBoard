@@ -101,8 +101,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #2563eb;
-
 }
 .cards__container{
     border-top: 2px solid var(--color-border);
