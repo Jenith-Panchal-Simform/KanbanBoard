@@ -108,6 +108,7 @@
 }
 
 .cards__container{
+    flex:1;
     border-top: 2px solid var(--color-border);
     display: flex;
     flex-direction: column;

@@ -54,8 +54,10 @@ cards.forEach((current) => {
       // get nearest droppable container
       droppableBelow = elemBelow.closest(".droppable");
       if (!droppableBelow) {
-        droppableBelow = elemBelow.querySelector(".droppable");
+        return ;
       }
+
+      //add and remove classlist of selected status 
       if (lastDroppable != elemBelow) {
         if (lastDroppable) {
           lastDroppable.classList.remove("selected__status");
