@@ -8,9 +8,7 @@ cards.forEach((current) => {
     let shiftY = e.clientY - current.getBoundingClientRect().top;
 
     let droppableBelow = null; 
-    current.style.position = "absolute";
-    current.style.zIndex = 1000;
-    document.body.append(current); // move to body for free movement
+    // move to body for free movement
 
     function moveAt(pageX, pageY) {
       let newX = pageX - shiftX;
@@ -27,6 +25,9 @@ cards.forEach((current) => {
     }
 
     function onMouseMove(e) {
+      current.style.position = "absolute";
+    current.style.zIndex = 1000;
+    document.body.append(current); 
       moveAt(e.pageX, e.pageY);
 
       //  hide element to detect what's below it
@@ -44,11 +45,10 @@ cards.forEach((current) => {
     }
 
     document.addEventListener("mousemove", onMouseMove);
-
-    document.addEventListener("mouseup", function () {
+     function mouseUpHandler() {
 
       document.removeEventListener("mousemove", onMouseMove);
-
+      
       // if dropped inside a column
       if (droppableBelow) {
         droppableBelow.append(current);
@@ -59,8 +59,8 @@ cards.forEach((current) => {
         current.style.top = "";
         current.style.zIndex = "";
       }
-
-    }, { once: true });
+    }
+    document.addEventListener("mouseup",mouseUpHandler, { once: true });
 
     // disable default drag behavior
     current.ondragstart = () => false;

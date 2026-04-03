@@ -93,12 +93,16 @@
 .board__wrapper{
     display: flex;
     height:95vh;
+    overflow: auto;
 }
 .status{
     border:2px solid var(--color-border);
-    width:25%;
+    min-width:300px;    
+    width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: #2563eb;
+
 }
 .cards__container{
     border-top: 2px solid var(--color-border);
@@ -107,7 +111,6 @@
     flex-wrap: wrap;
     gap:var(--space-lg);
     align-items:center ;
-    overflow: auto;
 }
 .card{
     background-color: var(--color-primary);
