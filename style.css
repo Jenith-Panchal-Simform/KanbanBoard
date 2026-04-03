@@ -101,20 +101,20 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    transition: border-color 0.3s ease;
-}
-.selected__status{
-     border-color: var(--color-primary); 
 }
 
 .cards__container{
     flex:1;
-    border-top: 2px solid var(--color-border);
+    border: 2px solid var(--color-border);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap:var(--space-lg);
     align-items:center ;
+    transition: border-color 0.3s ease;
+}
+.selected__status{
+     border-color: var(--color-primary); 
 }
 .card{
     background-color: var(--color-primary);
@@ -124,6 +124,6 @@
     cursor: pointer;
 }
 .selected{
-    width:120px ;
+    width:80px ;
     aspect-ratio: 1/1;
 }

@@ -8,7 +8,7 @@ cards.forEach((current) => {
 
     let droppableBelow = null;
     let elemBelow = null;
-    let lastDroppable = null;
+    let previousDroppable= null;
     // move to body for free movement
 
     function moveAt(pageX, pageY) {
@@ -27,7 +27,6 @@ cards.forEach((current) => {
     function onMouseMove(e) {
       current.style.position = "absolute";
       current.style.zIndex = 1000;
-      document.body.append(current);
       moveAt(e.pageX, e.pageY);
 
       let edgeThreshold = 50;
@@ -49,36 +48,60 @@ cards.forEach((current) => {
       current.hidden = true;
       elemBelow = document.elementFromPoint(e.clientX, e.clientY);
       current.hidden = false;
-      console.log(elemBelow);
       if (!elemBelow) return;
+
       // get nearest droppable container
       droppableBelow = elemBelow.closest(".droppable");
       if (!droppableBelow) {
         return ;
       }
-
       //add and remove classlist of selected status 
-      if (lastDroppable != elemBelow) {
-        if (lastDroppable) {
-          lastDroppable.classList.remove("selected__status");
+      if (previousDroppable != droppableBelow) {
+        if (previousDroppable) {
+          previousDroppable.classList.remove("selected__status");
         }
-        if (elemBelow) {
-          elemBelow.classList.add("selected__status");
+        if (droppableBelow) {
+          droppableBelow.classList.add("selected__status");
         }
-        lastDroppable = elemBelow;
+        previousDroppable = droppableBelow;
+      }
+
+
+       //get nearest card
+      let cardBelow=elemBelow.closest('.card')
+      console.log(cardBelow)
+      if(!cardBelow && current.parentNode !== droppableBelow)
+      {
+        droppableBelow.append(current);
+        return;
+      }
+      let rect=cardBelow.getBoundingClientRect()
+      //middle of card
+      let middleY=rect.top+rect.height /2 ;
+
+      //compare mouse positions
+      if(e.clientY < middleY)
+      {
+        console.log("yes")
+        cardBelow.before(current)
+      }
+      else{
+        console.log("no")
+        console.log(current)
+        cardBelow.after(current)  
       }
     }
-
     document.addEventListener("mousemove", onMouseMove);
 
     function mouseUpHandler() {
       current.classList.remove("selected");
-
+      if(previousDroppable)
+      {
+        previousDroppable.classList.remove('selected__status')
+      }
       document.removeEventListener("mousemove", onMouseMove);
       // if dropped inside a column
       if (droppableBelow) {
-        droppableBelow.append(current);
-
         // reset styles
         current.style.position = "static";
         current.style.left = "";
