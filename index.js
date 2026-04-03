@@ -2,10 +2,13 @@ let cards = document.querySelectorAll(".card");
 
 cards.forEach((current) => {
   current.onmousedown = function (e) {
+    current.classList.add("selected");
     let shiftX = e.clientX - current.getBoundingClientRect().left;
     let shiftY = e.clientY - current.getBoundingClientRect().top;
 
     let droppableBelow = null;
+    let elemBelow = null;
+    let lastDroppable = null;
     // move to body for free movement
 
     function moveAt(pageX, pageY) {
@@ -32,7 +35,7 @@ cards.forEach((current) => {
 
       let container = document.querySelector(".board__wrapper");
 
-      //scroll the page when 
+      //scroll the page when
       // Right edge
       if (e.clientX > window.innerWidth - edgeThreshold) {
         container.scrollLeft += scrollSpeed;
@@ -42,24 +45,34 @@ cards.forEach((current) => {
       if (e.clientX < edgeThreshold) {
         container.scrollLeft -= scrollSpeed;
       }
-
       //  hide element to detect what's below it
       current.hidden = true;
-      let elemBelow = document.elementFromPoint(e.clientX, e.clientY);
+      elemBelow = document.elementFromPoint(e.clientX, e.clientY);
       current.hidden = false;
-
+      console.log(elemBelow);
       if (!elemBelow) return;
       // get nearest droppable container
       droppableBelow = elemBelow.closest(".droppable");
       if (!droppableBelow) {
         droppableBelow = elemBelow.querySelector(".droppable");
       }
+      if (lastDroppable != elemBelow) {
+        if (lastDroppable) {
+          lastDroppable.classList.remove("selected__status");
+        }
+        if (elemBelow) {
+          elemBelow.classList.add("selected__status");
+        }
+        lastDroppable = elemBelow;
+      }
     }
 
     document.addEventListener("mousemove", onMouseMove);
-    function mouseUpHandler() {
-      document.removeEventListener("mousemove", onMouseMove);
 
+    function mouseUpHandler() {
+      current.classList.remove("selected");
+
+      document.removeEventListener("mousemove", onMouseMove);
       // if dropped inside a column
       if (droppableBelow) {
         droppableBelow.append(current);

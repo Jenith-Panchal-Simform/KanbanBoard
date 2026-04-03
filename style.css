@@ -101,7 +101,12 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    transition: border-color 0.3s ease;
 }
+.selected__status{
+     border-color: var(--color-primary); 
+}
+
 .cards__container{
     border-top: 2px solid var(--color-border);
     display: flex;
@@ -116,4 +121,8 @@
     width:100px ;
     aspect-ratio: 1/1;
     cursor: pointer;
+}
+.selected{
+    width:120px ;
+    aspect-ratio: 1/1;
 }
