@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"  type="module" defer> </script>
+    <script src="index.js" type="module" defer> </script>
     <title>KanbanBoard</title>
 </head>
+
 <body class="board__container">
-        <header class="board__header">
-            <h1>Kanban Board</h1>
-            <button class="board__button" data-add >Create A task</button>
-        </header>   
-        <main class="board__wrapper">
-            <section class="status">
-                <h2>To do </h2>
-                <div class="cards__container board__todo droppable ">
-                    <div class="card" >1</div>
-                    <div class="card" >2</div>
-                    <div class="card" >Counter</div>
-                </div>
-            </section>
-            <section class="status"> 
-                <h2>In Progress</h2>
-                <div class="cards__container board__progress droppable">
-                    <div class="card">1</div>
-                    <div class="card">2</div>
-                     <div class="card">Counter</div>
-                </div>
-            </section>
-            <section class=" status">
-                <h2>Validation</h2>
-                <div class="cards__container board__validation droppable"></div>
-            </section>
-            <section class="status">
-                <h2>Completed</h2>
-                <div class="cards__container board__completed droppable"></div>
-            </section>
-        </main>
+    <header class="board__header">
+        <h1>Kanban Board</h1>
+        <button class="board__button" data-add>Create A task</button>
+    </header>
+    <main class="board__wrapper">
+        <section class="status">
+            <h2>To do </h2>
+            <div class="cards__container board__todo droppable" data-status="todo">
+            </div>
+        </section>
+        <section class="status">
+            <h2>In Progress</h2>
+            <div class="cards__container board__progress droppable" data-status="progress">
+            </div>
+        </section>
+        <section class="status">
+            <h2>Validation</h2>
+            <div class="cards__container board__validation droppable" data-status="validation">
+            </div>
+        </section>
+        <section class="status">
+            <h2>Completed</h2>
+            <div class="cards__container board__completed droppable" data-status="completed"></div>
+        </section>
+    </main>
 </body>
+
 </html>

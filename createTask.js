@@ -1,11 +1,20 @@
-export function initCreateTask()
-{   
-    let btn=document.querySelector(".board__button")
-    btn.addEventListener("click",()=>{
-    let status = document.querySelector(".droppable")
-    const newDiv=document.createElement("div")
-    newDiv.classList.add("card")
-    newDiv.textContent="Counter"
-    status.append(newDiv);
-   })
+import { render } from "./render.js";
+import { getData, saveData } from "./storage.js";
+
+export function initCreateTask() {
+    let btn = document.querySelector(".board__button")
+    btn.addEventListener("click", () => {
+        let statusElement = document.querySelector(".droppable")
+        let status = statusElement.dataset.status;
+        const newCard = {
+            id: Date.now().toString(),
+            text: "Counter"
+        };
+        // update storage
+        const data = getData();
+        data[status].push(newCard);
+        saveData(data);
+
+        render();
+    })
 }

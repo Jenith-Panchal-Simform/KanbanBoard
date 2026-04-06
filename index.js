@@ -1,5 +1,11 @@
 import { initCreateTask } from "./createTask.js";
-initCreateTask();
+import { render } from "./render.js";
+import { updateDataAfterDrop } from "./updateAfterDrop.js";
+window.addEventListener("load", () => {
+  render();
+  initCreateTask();
+});
+
 let dragged = null;
 document.addEventListener("mousedown", function (e) {
   const current = e.target.closest(".card");
@@ -97,6 +103,7 @@ document.addEventListener("mousedown", function (e) {
     if (!dragged) return;
     if (placeholder.parentNode) {
       placeholder.parentNode.insertBefore(dragged, placeholder);
+      updateDataAfterDrop(dragged, placeholder.parentNode);
     }
     dragged.classList.remove("dragging");
     dragged.style = "";
