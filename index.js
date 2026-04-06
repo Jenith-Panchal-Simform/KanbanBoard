@@ -38,6 +38,7 @@ document.addEventListener("mousedown", function (e) {
     function onMouseMove(e) {
       current.style.position = "absolute";
       current.style.zIndex = 1000;
+      current.style.opacity="0.5"
       moveAt(e.pageX, e.pageY);
 
       let edgeThreshold = 50;
@@ -77,7 +78,6 @@ document.addEventListener("mousedown", function (e) {
 
       //get nearest card
       let cardBelow = elemBelow.closest(".card");
-      console.log(cardBelow);
       if (!cardBelow && current.parentNode !== droppableBelow) {
         droppableBelow.append(current);
         return;
@@ -88,11 +88,8 @@ document.addEventListener("mousedown", function (e) {
 
       //compare mouse positions
       if (e.clientY < middleY) {
-        console.log("yes");
         cardBelow.before(current);
       } else {
-        console.log("no");
-        console.log(current);
         cardBelow.after(current);
       }
     }
@@ -111,6 +108,8 @@ document.addEventListener("mousedown", function (e) {
         current.style.left = "";
         current.style.top = "";
         current.style.zIndex = "";
+      current.style.opacity=""
+
       }
     }
     document.addEventListener("mouseup", mouseUpHandler, { once: true });
