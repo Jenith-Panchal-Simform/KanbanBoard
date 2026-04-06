@@ -1,8 +1,10 @@
-let cards = document.querySelectorAll(".card");
+import { initCreateTask } from "./createTask.js";
+initCreateTask();
+document.addEventListener("mousedown", function (e) {
+  const current = e.target.closest(".card");
 
-cards.forEach((current) => {
-  current.onmousedown = function (e) {
-    current.classList.add("selected");
+  if (!current) return;
+   current.classList.add("selected");
     let shiftX = e.clientX - current.getBoundingClientRect().left;
     let shiftY = e.clientY - current.getBoundingClientRect().top;
 
@@ -115,5 +117,4 @@ cards.forEach((current) => {
 
     // disable default drag behavior
     current.ondragstart = () => false;
-  };
-});
+  });
