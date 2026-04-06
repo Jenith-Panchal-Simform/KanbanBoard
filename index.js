@@ -8,18 +8,27 @@ cards.forEach((current) => {
 
     let droppableBelow = null;
     let elemBelow = null;
-    let previousDroppable= null;
+    let previousDroppable = null;
+    let container = document.querySelector(".board__wrapper");
+    let startContainer = current.closest(".droppable");
     // move to body for free movement
 
     function moveAt(pageX, pageY) {
+      let activeContainer =
+        droppableBelow || previousDroppable || startContainer;
+      if (!activeContainer) return;
+      let rect = activeContainer.getBoundingClientRect();
       let newX = pageX - shiftX;
       let newY = pageY - shiftY;
       //restrict the drag to the window if not scroll .
       // let maxY = document.documentElement.clientHeight - current.offsetHeight;
       // newY = Math.max(0, Math.min(newY, maxY));
+      let minY = rect.top + window.scrollY;
+      let maxY = rect.bottom + window.scrollY - current.offsetHeight;
       let maxX = document.documentElement.clientWidth - current.offsetWidth;
       newX = Math.max(0, Math.min(newX, maxX));
-      newY = Math.max(0, newY);
+      // newY = Math.max(0, newY);
+      newY = Math.max(minY, Math.min(newY, maxY));
       current.style.left = newX + "px";
       current.style.top = newY + "px";
     }
@@ -32,9 +41,7 @@ cards.forEach((current) => {
       let edgeThreshold = 50;
       let scrollSpeed = 20;
 
-      let container = document.querySelector(".board__wrapper");
-
-      //scroll the page when
+      //scroll the page when horizontal scroll
       // Right edge
       if (e.clientX > window.innerWidth - edgeThreshold) {
         container.scrollLeft += scrollSpeed;
@@ -53,9 +60,9 @@ cards.forEach((current) => {
       // get nearest droppable container
       droppableBelow = elemBelow.closest(".droppable");
       if (!droppableBelow) {
-        return ;
+        return;
       }
-      //add and remove classlist of selected status 
+      //add and remove classlist of selected status
       if (previousDroppable != droppableBelow) {
         if (previousDroppable) {
           previousDroppable.classList.remove("selected__status");
@@ -66,38 +73,33 @@ cards.forEach((current) => {
         previousDroppable = droppableBelow;
       }
 
-
-       //get nearest card
-      let cardBelow=elemBelow.closest('.card')
-      console.log(cardBelow)
-      if(!cardBelow && current.parentNode !== droppableBelow)
-      {
+      //get nearest card
+      let cardBelow = elemBelow.closest(".card");
+      console.log(cardBelow);
+      if (!cardBelow && current.parentNode !== droppableBelow) {
         droppableBelow.append(current);
         return;
       }
-      let rect=cardBelow.getBoundingClientRect()
+      let rect = cardBelow.getBoundingClientRect();
       //middle of card
-      let middleY=rect.top+rect.height /2 ;
+      let middleY = rect.top + rect.height / 2;
 
       //compare mouse positions
-      if(e.clientY < middleY)
-      {
-        console.log("yes")
-        cardBelow.before(current)
-      }
-      else{
-        console.log("no")
-        console.log(current)
-        cardBelow.after(current)  
+      if (e.clientY < middleY) {
+        console.log("yes");
+        cardBelow.before(current);
+      } else {
+        console.log("no");
+        console.log(current);
+        cardBelow.after(current);
       }
     }
     document.addEventListener("mousemove", onMouseMove);
 
     function mouseUpHandler() {
       current.classList.remove("selected");
-      if(previousDroppable)
-      {
-        previousDroppable.classList.remove('selected__status')
+      if (previousDroppable) {
+        previousDroppable.classList.remove("selected__status");
       }
       document.removeEventListener("mousemove", onMouseMove);
       // if dropped inside a column
