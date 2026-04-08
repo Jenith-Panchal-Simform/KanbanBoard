@@ -8,7 +8,7 @@ export function initCreateTask() {
         let status = statusElement.dataset.status;
         const newCard = {
             id: Date.now().toString(),
-            text: "Counter"
+            text: "Default Task"
         };
         // update storage
         const data = getData();

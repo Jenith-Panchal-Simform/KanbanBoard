@@ -13,11 +13,15 @@ export function updateDataAfterDrop(dragged, targetContainer) {
 
     // get new order from DOM
     const cards = [...targetContainer.querySelectorAll(".card")];
-
-    data[newStatus] = cards.map(card => ({
-        id: card.dataset.id,
-        text: card.textContent
-    }));
+    
+    data[newStatus] = cards.map(card => {
+        const input = card.querySelector("input");
+      
+        return {
+          id: card.dataset.id,
+          text: input.value
+        };
+      });
 
     saveData(data);
 }
