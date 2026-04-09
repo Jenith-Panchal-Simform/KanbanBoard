@@ -129,7 +129,6 @@
 
 .card {
     background:var(--color-bg-main);
-    width: 150px;
     height: 50px;
     border-radius: var(--radius-sm);
     cursor: grab;
@@ -178,7 +177,7 @@
 
 /* placeholder */
 .placeholder {
-    width: 150px;
+    width: 100%;
     height: 50px;
     border: 2px dashed var(--color-border);
     border-radius: var(--radius-sm);

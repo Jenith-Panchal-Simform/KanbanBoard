@@ -3,11 +3,18 @@ import { getData, saveData } from "./storage.js";
 export function render() {
     const data = getData();
     let cols = document.querySelectorAll(".droppable");
-
     cols.forEach(col => {
         const status = col.dataset.status;
-        col.innerHTML = "";
+        col.innerHTML = "";       
+
+        if(status === "todo" && data[status].length === 0)
+      {
+          const blank=document.createElement('div');
+          blank.textContent="No Tasks,Please create"
+          col.append(blank)
+      }
         data[status].forEach(card => {
+
             const div = document.createElement("div");
             div.classList.add("card");
             div.dataset.id = card.id;
