@@ -8,8 +8,8 @@ window.addEventListener("load", () => {
 
 let dragged = null;
 document.addEventListener("mousedown", function (e) {
-  //prevent dragging when clicking on input or button
-  if (e.target.tagName === "INPUT" || e.target.tagName === "BUTTON") return;
+  //prevent dragging when clicking on card or button
+  if (e.target.closest(".card__text") || e.target.closest("button")) return;
   const current = e.target.closest(".card");
 
   if (!current) return;

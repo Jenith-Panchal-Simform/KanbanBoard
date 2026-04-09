@@ -129,6 +129,7 @@
 
 .card {
     background:var(--color-bg-main);
+    width:200px;
     height: 50px;
     border-radius: var(--radius-sm);
     cursor: grab;
@@ -136,7 +137,6 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--space-sm) var(--space-lg);
-    ;
     transition: border 0.3s ease;
 }
 
@@ -177,9 +177,9 @@
 
 /* placeholder */
 .placeholder {
-    width: 100%;
+    width: 200px;
     height: 50px;
-    border: 2px dashed var(--color-border);
+    border: 2px dashed var(--color-text-main);
     border-radius: var(--radius-sm);
 }
 @media (max-width: 480px) {
