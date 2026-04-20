@@ -15,7 +15,7 @@ export function updateDataAfterDrop(dragged, targetContainer) {
     const cards = [...targetContainer.querySelectorAll(".card")];
     
     data[newStatus] = cards.map(card => {
-        const input = card.querySelector("input");
+        const input = card.querySelector("textarea");
       
         return {
           id: card.dataset.id,

@@ -17,15 +17,16 @@ export function render() {
       div.classList.add("card");
       div.dataset.id = card.id;
       //add input element
-      const input = document.createElement("input");
+      const input = document.createElement("textarea");
       input.classList.add("card__input");
       input.value = card.text;
       input.setAttribute("readonly", true);
 
-      input.addEventListener("click", (e) => {
-        e.stopPropagation(); 
+      input.addEventListener("mousedown", (e) => {
+        e.stopPropagation(); // ⬅️ prevents drag
+      });
+      input.addEventListener("focus", () => {
         input.removeAttribute("readonly");
-        input.focus();
       });
       //save updates
       function save() {
