@@ -1,10 +1,8 @@
 import { initCreateTask } from "./createTask.js";
 import { render } from "./render.js";
 import { updateDataAfterDrop } from "./updateAfterDrop.js";
-window.addEventListener("load", () => {
   render();
   initCreateTask();
-});
 
 let dragged = null;
 document.addEventListener("mousedown", function (e) {
