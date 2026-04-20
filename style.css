@@ -122,11 +122,13 @@
   position: absolute;
   z-index: 1000;
   pointer-events: none;
+  border: 2px solid var(--color-primary);
 }
 
 .card {
   background: var(--color-bg-main);
   width: 200px;
+  height: 100px;
   border-radius: var(--radius-sm);
   cursor: grab;
   display: flex;
@@ -136,16 +138,12 @@
   transition: border 0.3s ease;
 }
 
-.selected {
-  border: 2px solid var(--color-primary);
-}
-
 .card__input {
   border: none;
   outline: none;
   font-size: var(--font-size-md);
   width: 100%;
-  min-height: 50px;
+  height: 100%;
   background: transparent;
   color: var(--color-text-main);
   font-weight: 500;
@@ -178,7 +176,7 @@
 /* placeholder */
 .placeholder {
   width: 200px;
-  height: 50px;
+  height: 100px;
   border: 2px dashed var(--color-text-main);
   border-radius: var(--radius-sm);
 }

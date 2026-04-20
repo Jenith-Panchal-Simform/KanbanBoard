@@ -1,17 +1,16 @@
 import { initCreateTask } from "./createTask.js";
 import { render } from "./render.js";
 import { updateDataAfterDrop } from "./updateAfterDrop.js";
-  render();
-  initCreateTask();
+render();
+initCreateTask();
 
 let dragged = null;
 document.addEventListener("mousedown", function (e) {
   //prevent dragging when clicking on card or button
-if (e.target.closest("input") || e.target.closest("button")) return;
+  if (e.target.closest("input") || e.target.closest("button")) return;
   const current = e.target.closest(".card");
 
   if (!current) return;
-  current.classList.add("selected");
   let shiftX = e.clientX - current.getBoundingClientRect().left;
   let shiftY = e.clientY - current.getBoundingClientRect().top;
 
@@ -110,7 +109,6 @@ if (e.target.closest("input") || e.target.closest("button")) return;
 
     placeholder.remove();
     dragged = null;
-    current.classList.remove("selected");
     if (previousDroppable) {
       previousDroppable.classList.remove("selected__status");
     }
