@@ -77,7 +77,8 @@
 }
 .board__header{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: var(--space-md);
 }
 .board__button{
     padding: var(--space-md);
